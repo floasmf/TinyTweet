@@ -3,20 +3,16 @@ import com.googlecode.objectify.annotation.*;
 
 @Entity
 public class UserEntity {
-	@Id Long IdUser;
+	@Id Long idUser;
 	String name;
 	
-	public UserEntity(Long id, String n) {
-		IdUser = id;
-		name = n;
-	}
-	
+		
 	public Long getId() {
-		return IdUser;
+		return idUser;
 	}
 	
 	public void setId(Long id) {
-		IdUser = id;
+		idUser = id;
 	}
 	
 	public String getName() {

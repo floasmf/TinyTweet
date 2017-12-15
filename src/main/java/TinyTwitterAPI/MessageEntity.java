@@ -1,13 +1,12 @@
 package TinyTwitterAPI;
 
 import com.googlecode.objectify.annotation.*;
-import com.googlecode.objectify.Key;
 
 @Entity
 public class MessageEntity {
 	@Id Long idMessage;
 	String message;
-	Key<UserEntity> user;
+	Long userId;
 	Long timestamp;
 	
 	
@@ -29,12 +28,12 @@ public class MessageEntity {
 	}
 	
 	
-	public Key<UserEntity> getUser(){
-		return user;
+	public Long getUser(){
+		return userId;
 	}
 	
-	public void setUser(Key<UserEntity> k) {
-		user=k;
+	public void setUser(Long k) {
+		userId=k;
 	}
 	
 	
