@@ -1,14 +1,25 @@
 package TinyTwitterAPI;
 
 import com.googlecode.objectify.annotation.*;
+import java.sql.Timestamp;
 
 @Entity
 public class MessageEntity {
 	@Id Long idMessage;
 	String message;
 	Long userId;
-	Long timestamp;
+	@Index String timestamp;
 	
+	public MessageEntity() {}
+	
+	public MessageEntity(String message, Long userId) {
+		this.message=message;
+		this.userId=userId;
+		
+		timestamp = new Timestamp(System.currentTimeMillis()).toString();
+		
+		this.idMessage = null;
+	}
 	
 	public Long getIdMessage() {
 		return idMessage;
@@ -37,11 +48,11 @@ public class MessageEntity {
 	}
 	
 	
-	public void setTimestamp(Long t) {
+	public void setTimestamp(String t) {
 		timestamp = t;
 	}
 	
-	public Long getTimestamp() {
+	public String getTimestamp() {
 		return timestamp;
 	}
 }
