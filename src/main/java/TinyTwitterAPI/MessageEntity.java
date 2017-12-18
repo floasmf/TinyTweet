@@ -1,14 +1,21 @@
 package TinyTwitterAPI;
 
-import com.googlecode.objectify.annotation.*;
 import java.sql.Timestamp;
 
-@Entity
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
+@PersistenceCapable(identityType=IdentityType.APPLICATION)
 public class MessageEntity {
-	@Id Long idMessage;
-	String message;
-	Long userId;
-	@Index String timestamp;
+	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY) Long idMessage;
+	
+	@Persistent String message;
+	@Persistent Long userId;
+	@Persistent String timestamp;
 	
 	public MessageEntity() {}
 	

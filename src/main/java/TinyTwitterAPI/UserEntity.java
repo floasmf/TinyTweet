@@ -1,13 +1,22 @@
 package TinyTwitterAPI;
-import com.googlecode.objectify.annotation.*;
+
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
+
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity
+@PersistenceCapable(identityType=IdentityType.APPLICATION)
 public class UserEntity {	
-	@Id Long idUser;
-	String username;
-	Set<Long> follows = new HashSet<Long>();
+	@PrimaryKey
+	@Persistent(valueStrategy=IdGeneratorStrategy.IDENTITY) Long idUser;
+	
+	@Persistent String username;
+	
+	@Persistent Set<Long> follows = new HashSet<Long>();
 	
 	public UserEntity() {}
 	
